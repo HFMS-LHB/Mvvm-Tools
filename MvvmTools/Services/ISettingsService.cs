@@ -38,6 +38,7 @@ namespace MvvmTools.Services
         // Name of the global settings within Visual Studio's store.
         private const string GoToViewOrViewModelPropName = "GoToViewOrViewModel";
         private const string GoToViewOrViewModelSearchSolutionPropName = "GoToViewOrViewModelSearchSolution";
+        private const string PrefixesPropName = "Prefixes";
         private const string ViewSuffixesPropName = "ViewSuffixes";
         private const string LocalTemplateFolderPropName = "LocalTemplateFolder";
         
@@ -46,6 +47,8 @@ namespace MvvmTools.Services
         // The physical store used by Visual Studio to save settings, instead of app.config,
         // which is not supported in VSIX.
         private readonly WritableSettingsStore _userSettingsStore;
+
+        public static readonly string[] DefaultPrefixes;
 
         // These are the global view suffixes, but they can be overridden.
         public static readonly string[] DefaultViewSuffixes;
@@ -61,6 +64,7 @@ namespace MvvmTools.Services
 
         static SettingsService()
         {
+            DefaultPrefixes = new[] {"" };
             DefaultViewSuffixes = new [] { "", "View", "Flyout", "UserControl", "Page", "Window", "Dialog" };
             
             SolutionDefaultProjectOptions = new ProjectOptions
@@ -155,6 +159,7 @@ namespace MvvmTools.Services
             {
                 GoToViewOrViewModelOption = GetEnum(GoToViewOrViewModelPropName, GoToViewOrViewModelOption.ShowUi),
                 GoToViewOrViewModelSearchSolution = GetBool(GoToViewOrViewModelSearchSolutionPropName, true),
+                Prefixes = GetStringCollection(PrefixesPropName, DefaultPrefixes),
                 ViewSuffixes = GetStringCollection(ViewSuffixesPropName, DefaultViewSuffixes),
                 LocalTemplateFolder = GetString(LocalTemplateFolderPropName, DefaultLocalTemplateFolder)
             };

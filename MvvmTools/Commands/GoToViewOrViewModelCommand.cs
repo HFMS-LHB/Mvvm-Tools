@@ -87,7 +87,7 @@ namespace MvvmTools.Commands
                             viewLocationOptions,
                             pi,
                             classesInFile.Select(c => c.Class),
-                            new[] { "uc" },
+                            settings.Prefixes,
                             settings.ViewSuffixes,
                             settingsPm.ViewModelSuffix);
                     }
@@ -99,7 +99,7 @@ namespace MvvmTools.Commands
                             null,
                             pi,
                             classesInFile.Select(c => c.Class),
-                            new[] { "uc" },
+                            settings.Prefixes,
                             settings.ViewSuffixes,
                             settings.SolutionOptions.ViewModelSuffix);
 

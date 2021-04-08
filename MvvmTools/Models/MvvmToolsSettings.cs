@@ -14,12 +14,14 @@ namespace MvvmTools.Models
             GoToViewOrViewModelOption = GoToViewOrViewModelOption.ShowUi;
             ProjectOptions = new List<ProjectOptions>();
 
+            Prefixes = SettingsService.DefaultViewSuffixes;
             ViewSuffixes = SettingsService.DefaultViewSuffixes;
         }
 
         public GoToViewOrViewModelOption GoToViewOrViewModelOption { get; set; }
         public bool GoToViewOrViewModelSearchSolution { get; set; }
 
+        public string[] Prefixes { get; set; }
         public string[] ViewSuffixes { get; set; }
         
         // Configuration settings for the solutions.
